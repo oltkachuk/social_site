@@ -1,0 +1,10 @@
+.content_header_img img {
+    width: 100%;
+    height: 200px;
+}
+
+.addPost {
+    padding: 0px 30px;
+    display: grid;
+    grid-template-columns: 9fr 1fr;
+}

@@ -1,0 +1,24 @@
+.post {
+    border: aqua 1px solid;
+    padding: 20px;
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.avatar img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+.avatar {
+    margin-right: 15px;
+}
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+.text {
+    color: rgb(123, 212, 212); 
+}

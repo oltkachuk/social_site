@@ -1,0 +1,36 @@
+.dialogs{
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+}
+.dialogsWrapper{
+    margin: 10px 0px;
+    padding: 10px;
+    border-right: 1px solid yellow;
+}
+.dialogsItem:not(:last-child){
+    margin-bottom: 10px;    
+}
+
+.dialogsItem a{
+    text-decoration: none;
+    color: black;
+}
+.dialogsItem a:hover{
+    opacity: 0.5;
+    transition: 0.2;
+}
+
+.messeges{
+    margin: 10px 0px;
+    padding: 10px;
+}
+.messegesItem{
+    color: violet;
+}
+
+.dialogsItem a.activeLink {
+    color: red;
+}
+.dialogsItem a.activeLink:hover{
+    opacity: 1;
+}

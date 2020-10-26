@@ -1,17 +1,25 @@
 import './App.css';
-import Content from './Component/Content';
-import Header from './Component/Header.jsx';
-import Sidebar from './Component/Sidebar.jsx';
+import Header from './Component/Header/Header';
+import Sidebar from './Component/Sidebar/Sidebar';
+import Profile from './Component/Profile/Profile';
+import Dialogs from './Component/Dialogs/Dialogs';
+import { BrowserRouter, Route } from 'react-router-dom';
+
 
 
 
 const App = () => {
   return (
-    <div className='wrapper'>
-      <Header />
-      <Sidebar />
-      <Content />
-    </div>
+    <BrowserRouter>
+      <div className='wrapper'>
+        <Header />
+        <Sidebar />
+        <div className='wrapper-content'>
+          <Route path='/profile' component={ Profile } />
+          <Route path='/dialogs' component={ Dialogs } /> 
+        </div>
+      </div>
+    </BrowserRouter>
   )
 }
 
