@@ -16,8 +16,7 @@ const Profile = ( props ) => {
       <ProfileInfo />
       <AddNewPost  
         profilePage = { props.profilePage } 
-        addPost = { props.addPost } 
-        updateTextPost = { props.updateTextPost }
+        dispatch = { props.dispatch }
       />
     </main>
   );

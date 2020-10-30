@@ -13,17 +13,16 @@ const App = (props) => {
     <BrowserRouter>
       <div className='wrapper'>
         <Header />
-        <Sidebar />
+        <Sidebar sidebarPage = { props.state.sidebarPage } />
         <div className='wrapper-content'>
           <Route path='/profile' render={ () => <Profile 
             profilePage = { props.state.profilePage } 
-            addPost = { props.addPost }
-            updateTextPost = { props.updateTextPost }
+            dispatch = { props.dispatch }
           />} 
         />
           <Route path='/dialogs' render={ () => <Dialogs 
-            dialogsPage = { props.store.state.dialogsPage }
-            metods = { props.store } 
+            dialogsPage = { props.state.dialogsPage }
+            dispatch = { props.dispatch }
           /> } 
         /> 
         </div>

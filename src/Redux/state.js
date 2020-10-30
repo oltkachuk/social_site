@@ -1,3 +1,7 @@
+import dialogsReducer from "./dialogsReducer"
+import profileReducer from "./profileReducer"
+
+
 const store = {
     _state: {
         profilePage: {
@@ -15,6 +19,7 @@ const store = {
                 {id: 3, messege: 'Yes. I am fine', status: 'input'},
                 {id: 4, messege: 'Thanks', status: 'output'}
             ],
+            currentTextMessege: '',
             dialogsData: [
                 {id: 1, name: 'Oleh'},
                 {id: 2, name: 'Vika'},
@@ -22,31 +27,38 @@ const store = {
                 {id: 4, name: 'Roman'},
                 {id: 5, name: 'Dima'}
             ]
+        },
+        sidebarPage: {
+            friends: [
+                { id: 1, name: 'Oleh' },
+                { id: 2, name: 'Tanya' },
+                { id: 3, name: 'Dima' },
+                { id: 4, name: 'Roman' },
+                { id: 5, name: 'Uliana Prytula' },
+                { id: 6, name: 'Ivan' },
+                { id: 7, name: 'Yuriy' },
+                { id: 8, name: 'Anonim' },
+            ]
         }        
     },
+    _subscriberInform() {},
+
     getState() {
         return this._state
     },
-    subscriberInform() {},
-    updateTextPost(text) {
-        this._state.profilePage.currentTextPost = text
-        this.subscriberInform(this._state)
-    },
-    addPost() {
-        let newPost = {id: 5, messege: this._state.profilePage.currentTextPost, countLike: 0 }
-        this._state.profilePage.postData.unshift(newPost)
-        this._state.profilePage.currentTextPost = ''
-        this.subscriberInform(this._state)
-    },
-    addMessege(textMessege) {
-        let newMessege = {id: 5, messege: textMessege, status: 'input'}
-        this._state.dialogsPage.messegesData.push(newMessege)
-        this.subscriberInform(this._state)
-    },
     subscribe(observer){
-        this.subscriberInform = observer;    
-    }
+        this._subscriberInform = observer;    
+    },
+    
+    dispatch(actions) {
+        this._state.profilePage = profileReducer(this._state.profilePage, actions)
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, actions)
+        this._subscriberInform(this._state)
+    },
+
 }
+
+window.store = store
 
 export default store
 

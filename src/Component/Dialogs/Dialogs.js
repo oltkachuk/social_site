@@ -5,10 +5,10 @@ import SendMessege from './SendMessege/SendMessege';
 
 
 const Dialogs = (props) => {
-    const dialogsItems = props.state.dialogsData
+    const dialogsItems = props.dialogsPage.dialogsData
         .map( dialog => <UsersDialog name = { dialog.name } id = { dialog.id }/> );
 
-    const messegesItems = props.state.messegesData
+    const messegesItems = props.dialogsPage.messegesData
         .map( m => {
             return m.status === 'output' 
                 ? <Messeges messege = { m.messege } class = 'output' />
@@ -21,7 +21,10 @@ const Dialogs = (props) => {
             </div>
             <div className={ s.messeges }>
                 { messegesItems }
-                <SendMessege addMessege = { props.addMessege } />
+                <SendMessege 
+                    currentTextMessege = { props.dialogsPage.currentTextMessege }
+                    dispatch = { props.dispatch }
+                />
             </div>
         </div>
     )    

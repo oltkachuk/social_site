@@ -1,11 +1,11 @@
 import Avatar from '../../Items/Avatar/Avatar';
 import s from './../Sidebar.module.css';
 
-const FriendsList = () => {
+const FriendsList = (props) => {
     return (
         <div className={ s.friend }>
             <Avatar />        
-            <div>Names</div>
+            <div>{ props.name }</div>
         </div>
     )
 }
