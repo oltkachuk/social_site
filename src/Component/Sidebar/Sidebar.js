@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import FriendsList from './FriendsList/FriendsList';
 import s from './Sidebar.module.css';
 
 
@@ -20,6 +21,21 @@ const Sidebar = () => {
           </div>
           <div className={ s.item }>
             <a href='#s'>Settings</a>
+          </div>
+          <div className={ s.friends }>
+            <div>Friends</div>
+            <div className={ s.wrapperFriends }>
+              <FriendsList /> 
+              <FriendsList /> 
+              <FriendsList /> 
+              <FriendsList />
+              <FriendsList />
+              <FriendsList />
+              <FriendsList />
+              <FriendsList />
+              <FriendsList />
+              <FriendsList />
+            </div>            
           </div>
         </nav>
       </div>

@@ -8,7 +8,7 @@ const Post = (props) => {
                 <img src="https://www.indiewire.com/wp-content/uploads/2019/03/shutterstock_5885988bd.jpg" alt="avatar" />
             </div>
             <div className={ s.text }>
-                {props.messege}
+                { props.messege }
             </div>
         </div>
         <div>

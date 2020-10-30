@@ -1,6 +1,31 @@
 import { NavLink } from 'react-router-dom'
+import Avatar from '../Items/Avatar/Avatar'
 import s from './Dialogs.module.css'
+import SendMessege from './SendMessege/SendMessege';
 
+
+const Dialogs = (props) => {
+    const dialogsItems = props.state.dialogsData
+        .map( dialog => <UsersDialog name = { dialog.name } id = { dialog.id }/> );
+
+    const messegesItems = props.state.messegesData
+        .map( m => {
+            return m.status === 'output' 
+                ? <Messeges messege = { m.messege } class = 'output' />
+                : <Messeges messege = { m.messege } class = 'input'  />
+        })
+    return (
+        <div className={ s.dialogs }>
+            <div className={ s.dialogsWrapper }>
+                { dialogsItems }
+            </div>
+            <div className={ s.messeges }>
+                { messegesItems }
+                <SendMessege addMessege = { props.addMessege } />
+            </div>
+        </div>
+    )    
+}
 
 const UsersDialog = (props) => {
     return (
@@ -10,47 +35,15 @@ const UsersDialog = (props) => {
     )
 }
 
+
 const Messeges = (props) => {
     return (
-        <div className={ s.messegesItem }>
-            <div>{ props.messege }</div>
+        <div className={ s.messegesList+" "+s[props.class] }>
+            <Avatar />
+            <div className={ s.text }>{ props.messege }</div>
         </div>
     )
 }
 
-let dialogsData = [
-    {id: 1, name: 'Oleh'},
-    {id: 2, name: 'Vika'},
-    {id: 3, name: 'Uliana'},
-    {id: 4, name: 'Roman'},
-    {id: 5, name: 'Dima'}
-]
-
-let messegesData = [
-    {id: 1, messeges: 'Hello'},
-    {id: 1, messeges: 'Are you OK?'},
-    {id: 1, messeges: 'Yes. I am fine'},
-    {id: 1, messeges: 'Thanks'}
-]
-
-const dialogsItems = dialogsData
-    .map( dialog => <UsersDialog name = { dialog.name } id = { dialog.id }/> );
-
-const messegesItems = messegesData
-    .map( messege =>  <Messeges messege = {messege.messeges} />)
-
-
-const Dialogs = (props) => {
-    return (
-        <div className={ s.dialogs }>
-            <div className={ s.dialogsWrapper }>
-                { dialogsItems }
-            </div>
-            <div className={ s.messeges }>
-                { messegesItems }
-            </div>
-        </div>
-    )
-}
 
 export default Dialogs;

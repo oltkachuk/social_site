@@ -24,8 +24,12 @@
     margin: 10px 0px;
     padding: 10px;
 }
-.messegesItem{
+.messegesList{
     color: violet;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
 }
 
 .dialogsItem a.activeLink {
@@ -34,3 +38,19 @@
 .dialogsItem a.activeLink:hover{
     opacity: 1;
 }
+.text{
+    padding:  0px 10px;
+    color: yellow;
+}
+
+.messegesList.input {
+    justify-content: right;
+}
+.messegesList.input .text {
+    order: -1;
+}.formSendMessege{
+    display: grid;
+    padding: 0 30px;
+    grid-template-columns: 8fr 2fr;
+}
+

@@ -8,21 +8,28 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 
 
-const App = () => {
+const App = (props) => {
   return (
     <BrowserRouter>
       <div className='wrapper'>
         <Header />
         <Sidebar />
         <div className='wrapper-content'>
-          <Route path='/profile' component={ Profile } />
-          <Route path='/dialogs' component={ Dialogs } /> 
+          <Route path='/profile' render={ () => <Profile 
+            profilePage = { props.state.profilePage } 
+            addPost = { props.addPost }
+            updateTextPost = { props.updateTextPost }
+          />} 
+        />
+          <Route path='/dialogs' render={ () => <Dialogs 
+            dialogsPage = { props.store.state.dialogsPage }
+            metods = { props.store } 
+          /> } 
+        /> 
         </div>
       </div>
     </BrowserRouter>
   )
 }
-
-
 
 export default App;

@@ -1,32 +1,10 @@
-import s from './Profile.module.css'
-import Post from './Post/Post';
+import AddNewPost from './AddNewPost/AddNewPost';
+import s from './Profile.module.css';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 
-let postData = [
-  {id: 1, messege: 'Hello! How are you?', countLike: 5},
-  {id: 2, messege: 'Hello! I am fine. Are you?', countLike: 4},
-  {id: 3, messege: 'I am fine too', countLike: 2}
-]
 
-const postItem = postData
-  .map( post => <Post messege={post.messege} countLike={post.countLike} />)
-
-const AddNewPost = () => {
-  return (
-    <div>
-      <div className={ s.addPost }>
-        <textarea></textarea>
-        <button>Add new post</button>
-      </div>
-      <div>
-        { postItem }
-      </div>
-    </div>
-  );
-}
-
-const Content = () => {
+const Profile = ( props ) => {
   return (
     <main className={ s.content }>
       <div className={ s.content_header_img }>
@@ -36,10 +14,14 @@ const Content = () => {
         />
       </div>
       <ProfileInfo />
-      <AddNewPost />
+      <AddNewPost  
+        profilePage = { props.profilePage } 
+        addPost = { props.addPost } 
+        updateTextPost = { props.updateTextPost }
+      />
     </main>
   );
 };
 
-export default Content;
+export default Profile;
 
