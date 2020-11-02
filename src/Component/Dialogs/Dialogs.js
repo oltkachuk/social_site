@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import Avatar from '../Items/Avatar/Avatar'
 import s from './Dialogs.module.css'
-import SendMessege from './SendMessege/SendMessege';
+import SendMessegeContainer from './SendMessege/SendMessegeContainer';
 
 
 const Dialogs = (props) => {
@@ -14,6 +14,7 @@ const Dialogs = (props) => {
                 ? <Messeges messege = { m.messege } class = 'output' />
                 : <Messeges messege = { m.messege } class = 'input'  />
         })
+
     return (
         <div className={ s.dialogs }>
             <div className={ s.dialogsWrapper }>
@@ -21,9 +22,9 @@ const Dialogs = (props) => {
             </div>
             <div className={ s.messeges }>
                 { messegesItems }
-                <SendMessege 
+                <SendMessegeContainer 
                     currentTextMessege = { props.dialogsPage.currentTextMessege }
-                    dispatch = { props.dispatch }
+                    store = { props.store }
                 />
             </div>
         </div>

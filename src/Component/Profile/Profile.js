@@ -1,4 +1,5 @@
-import AddNewPost from './AddNewPost/AddNewPost';
+
+import AddNewPostContainer from './AddNewPost/AddNewPostContainer';
 import s from './Profile.module.css';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
@@ -14,9 +15,9 @@ const Profile = ( props ) => {
         />
       </div>
       <ProfileInfo />
-      <AddNewPost  
+      <AddNewPostContainer  
         profilePage = { props.profilePage } 
-        dispatch = { props.dispatch }
+        store = { props.store }
       />
     </main>
   );

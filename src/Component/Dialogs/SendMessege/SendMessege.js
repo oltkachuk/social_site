@@ -1,22 +1,21 @@
 import s from './../Dialogs.module.css'
 import React from 'react'
-import { UpdateTextMessegeActionCreater, AddMessegeActionCreater } from './../../../Redux/dialogsReducer'
 
 const SendMessege = (props) => {
-    const updateText = (e) => {
+    const onUpdateText = (e) => {
         let text = e.target.value
-        props.dispatch(UpdateTextMessegeActionCreater(text))
+        props.updateText(text)
     }
-    const send = () => {
-        props.dispatch(AddMessegeActionCreater())
+    const onSend = () => {
+        props.sendMessege()
     }
     return (
         <div className={ s.formSendMessege }>
             <textarea  
-                onChange = { updateText } 
-                value = { props.currentTextMessege } 
+                onChange = { onUpdateText } 
+                value = { props.currentText } 
             />
-            <button onClick = { send }>Send</button>
+            <button onClick = { onSend }>Send</button>
         </div>
     )
 }
