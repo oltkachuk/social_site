@@ -5,7 +5,7 @@ import s from './Sidebar.module.css';
 
 const Sidebar = (props) => {
 
-  const friendList = props.sidebarPage.friends
+  const friendList = props.friendsList
     .map(friend => <FriendsList name = {friend.name} />)
 
   return (
@@ -28,7 +28,7 @@ const Sidebar = (props) => {
         </div>
         <div className={ s.friends }>
           <div>Friends</div>
-          <div className={ s.wrapperFriends }>
+          <div className={ s.wrapperFriends }>      
             { friendList }
           </div>            
         </div>

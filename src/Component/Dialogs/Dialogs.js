@@ -1,19 +1,27 @@
 import { NavLink } from 'react-router-dom'
 import Avatar from '../Items/Avatar/Avatar'
 import s from './Dialogs.module.css'
-import SendMessegeContainer from './SendMessege/SendMessegeContainer';
 
 
 const Dialogs = (props) => {
-    const dialogsItems = props.dialogsPage.dialogsData
-        .map( dialog => <UsersDialog name = { dialog.name } id = { dialog.id }/> );
+    const dialogsItems = props.dialogsUser
+        .map( dialog => <UsersDialog name = { dialog.name } id = { dialog.id }/> 
+    );
 
-    const messegesItems = props.dialogsPage.messegesData
+    const messegesItems = props.messeges
         .map( m => {
             return m.status === 'output' 
                 ? <Messeges messege = { m.messege } class = 'output' />
                 : <Messeges messege = { m.messege } class = 'input'  />
-        })
+    })
+
+    const onUpdateText = (text) => {
+        props.updateText(text)
+    }
+    const onSendMessege = () => {
+        props.sendMessege()
+    }
+
 
     return (
         <div className={ s.dialogs }>
@@ -22,10 +30,13 @@ const Dialogs = (props) => {
             </div>
             <div className={ s.messeges }>
                 { messegesItems }
-                <SendMessegeContainer 
-                    currentTextMessege = { props.dialogsPage.currentTextMessege }
-                    store = { props.store }
-                />
+                <div className={ s.formSendMessege }>
+                    <textarea  
+                        onChange = { onUpdateText } 
+                        value = { props.currentText } 
+                    />
+                    <button onClick = { onSendMessege }>Send</button>
+                </div>
             </div>
         </div>
     )    

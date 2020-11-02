@@ -5,7 +5,7 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 
 
-const Profile = ( props ) => {
+const Profile = () => {
   return (
     <main className={ s.content }>
       <div className={ s.content_header_img }>
@@ -15,10 +15,7 @@ const Profile = ( props ) => {
         />
       </div>
       <ProfileInfo />
-      <AddNewPostContainer  
-        profilePage = { props.profilePage } 
-        store = { props.store }
-      />
+      <AddNewPostContainer />
     </main>
   );
 };
